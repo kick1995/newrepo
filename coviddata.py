@@ -87,9 +87,7 @@ def state(msg):
                 st=[]
                 for i in data_api.index:
                   st.append(i)
-                print(st)
-                #dl,tg,
-                msg='East Godavari'
+                
                 for i in range(len(st)):
                   if st[i] not in ['TT','TG','UN']:
                     l=data_api.loc[st[i]][1]['districts'].keys()
@@ -97,9 +95,9 @@ def state(msg):
                       find=st[i]
                 if find not in ['TT','TG','UN']:
                     l1='Stats in the last and latest update are as follows:'
-                    l2=data_api.loc[find][-1]['districts'][msg]['total']['confirmed']
-                    l3=data_api.loc[find][-1]['districts'][msg]['total']['recovered']
-                    l4=data_api.loc[find][-1]['districts'][msg]['total']['deceased']
+                    l2='Confirmed: ' + str(data_api.loc[find][-1]['districts'][msg]['total']['confirmed'])
+                    l3='Recovered: ' + str(data_api.loc[find][-1]['districts'][msg]['total']['recovered'])
+                    l4='Deaths: ' + str(data_api.loc[find][-1]['districts'][msg]['total']['deceased'])
                 else:
                     l1 = 'no data found'
                     l2 = 'no data found'
