@@ -22,6 +22,7 @@ def sms_reply():
     resp.message(r)
     resp.message(dp)
     resp.message(rp)
+    resp.message(a+'\n'+c+'\n'+d+'\n'+r+'\n'+dp+'\n'+rp)
     return str(resp)
 
 if __name__ == "__main__":
