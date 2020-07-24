@@ -84,20 +84,22 @@ def state(msg):
                 data_api=data_api.T
                 data_api=data_api.iloc[86:149]
                 data_api=data_api.T
-                st=[]
+                st1=[]
                 for i in data_api.index:
-                  st.append(i)
+                  st1.append(i)
                 
-                for i in range(len(st)):
-                  if st[i] not in ['TT','TG','UN']:
-                    l=data_api.loc[st[i]][1]['districts'].keys()
+                for i in range(len(st1)):
+                  if st1[i] not in ['TT','TG','UN']:
+                    l=data_api.loc[st1[i]][1]['districts'].keys()
                     if msg in l:
-                      find=st[i]
+                      find=st1[i]
+                
                 if find not in ['TT','TG','UN']:
                     l1='Stats in the last and latest update are as follows:'
-                    l2='Confirmed: ' + str(data_api.loc[find][-1]['districts'][msg]['total']['confirmed'])
-                    l3='Recovered: ' + str(data_api.loc[find][-1]['districts'][msg]['total']['recovered'])
-                    l4='Deaths: ' + str(data_api.loc[find][-1]['districts'][msg]['total']['deceased'])
+                    l2='Confirmed: ' + str(data_api.loc[find][-1]['districts'][msg]['delta']['confirmed'])
+                    l3='Recovered: ' + str(data_api.loc[find][-1]['districts'][msg]['delta']['recovered'])
+                    l4='Deaths: ' + str(data_api.loc[find][-1]['districts'][msg]['delta']['deceased'])
+                    
                 else:
                     l1 = 'no data found'
                     l2 = 'no data found'
@@ -116,4 +118,5 @@ def state(msg):
                 l2 = 'no data found'
                 l3 = 'no data found'
                 l4 = 'no data found'
-    return a, c, d, r, dp, rp,l1,l2,l3,l4
+    
+    return a,c,d,r,dp,rp,l1,l2,l3,l4
