@@ -78,10 +78,34 @@ def state(msg):
                 r = 'Recovered: ' + str(df3.loc[msg]['recovered'])
                 dp = 'Death Percentage: ' + str(dp1) + '%'
                 rp = 'Recovery Percentage: ' + str(rp1) + '%'
-                l1 = 'no data found'
-                l2 = 'no data found'
-                l3 = 'no data found'
-                l4 = 'no data found'
+                data_api1=requests.get('https://api.covid19india.org/v4/data-all.json')
+                data_api2=json.loads(data_api1.content)
+                data_api=pd.DataFrame(data_api2)
+                data_api=data_api.T
+                data_api=data_api.iloc[86:149]
+                data_api=data_api.T
+                st=[]
+                for i in data_api.index:
+                  st.append(i)
+                print(st)
+                #dl,tg,
+                msg='East Godavari'
+                for i in range(len(st)):
+                  if st[i] not in ['TT','TG','UN']:
+                    l=data_api.loc[st[i]][1]['districts'].keys()
+                    if msg in l:
+                      find=st[i]
+                if find not in ['TT','TG','UN']:
+                    l1='Stats in the last and latest update are as follows:'
+                    l2=data_api.loc[find][-1]['districts'][msg]['total']['confirmed']
+                    l3=data_api.loc[find][-1]['districts'][msg]['total']['recovered']
+                    l4=data_api.loc[find][-1]['districts'][msg]['total']['deceased']
+                else:
+                    l1 = 'no data found'
+                    l2 = 'no data found'
+                    l3 = 'no data found'
+                    l4 = 'no data found'
+                    
                 break
             else:
                 a = 'not found'
