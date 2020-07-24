@@ -16,13 +16,7 @@ def sms_reply():
     # Create reply
     resp = MessagingResponse()
     resp.message("acha: {}".format(msg))
-    resp.message(a)
-    resp.message(c)
-    resp.message(d)
-    resp.message(r)
-    resp.message(dp)
-    resp.message(rp)
-    resp.message(a+'\n'+c+'\n'+d+'\n'+r+'\n'+dp+'\n'+rp)
+    resp.message(c+'\n'+a+'\n'+r+'\n'+rp+'\n'+d+'\n'+dp)
     return str(resp)
 
 if __name__ == "__main__":
