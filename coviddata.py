@@ -87,7 +87,7 @@ def state(msg):
                 st1=[]
                 for i in data_api.index:
                   st1.append(i)
-                
+                find='TT'
                 for i in range(len(st1)):
                   if st1[i] not in ['TT','TG','UN']:
                     l=data_api.loc[st1[i]][1]['districts'].keys()
