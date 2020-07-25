@@ -16,7 +16,7 @@ def sms_reply():
     # Create reply
     resp = MessagingResponse()
     resp.message("acha: {}".format(msg))
-    if l2 == 'no data found':
+    if l2 == 'no data found' or l2=='not found':
         resp.message(a+'\n'+c+'\n'+d+'\n'+r+'\n'+dp+'\n'+rp)
     else:
         resp.message(a+'\n'+c+'\n'+d+'\n'+r+'\n'+dp+'\n'+rp+'\n'+l1+'\n'+l2+'\n'+l3+'\n'+l4)
